@@ -22,7 +22,7 @@ public class Book {
     private UUID id;
 
     @Column
-    private String name;
+    private String title;
 
     @Column
     @DateTimeFormat(pattern = "yyyy")
