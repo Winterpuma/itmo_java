@@ -6,6 +6,8 @@ import com.example.lab.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -14,19 +16,23 @@ public class BookControllerImpl implements BookController {
 
     private final BookService bookService;
 
-    public BookDto addBook(BookDto book) {
-        return bookService.add(book);
+    public void addBook(BookDto book) {
+        bookService.add(book);
     }
 
-    public BookDto getBook(UUID bookId) {
+    public BookDto getBook(int bookId) {
         return bookService.find(bookId);
     }
 
-    public BookDto updateBook(BookDto book) {
-        return bookService.update(book);
+    public List<BookDto> getAllBooks() {
+        return bookService.findAll();
     }
 
-    public void deleteBook(UUID bookId) {
+    public void updateBook(BookDto book) {
+        bookService.update(book);
+    }
+
+    public void deleteBook(int bookId) {
         bookService.delete(bookId);
     }
 }

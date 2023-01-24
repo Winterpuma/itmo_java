@@ -1,40 +1,39 @@
 package com.example.lab.domain.entity;
 
-import com.example.lab.domain.model.BookState;
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @Entity
+@Table(name = "book")
 public class Book {
     @Id
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @Column
+    private int id;
 
+    @Basic
     @Column
     private String title;
 
-    @Column
-    @DateTimeFormat(pattern = "yyyy")
-    private Date year;
+    //@DateTimeFormat(pattern = "yyyy")
+    @Basic
+    @Column(name = "release_date")
+    @Temporal(TemporalType.DATE)
+    private Date releaseDate;
 
-    @Column
-    private BookState state;
+    /* @Column
+    private BookState state;*/
 
-
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "book_author",
+            name = "author_book",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id")
     )

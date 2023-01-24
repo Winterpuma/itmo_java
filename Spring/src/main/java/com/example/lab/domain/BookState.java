@@ -1,4 +1,4 @@
-package com.example.lab.domain.model;
+package com.example.lab.domain;
 
 public enum BookState {
 

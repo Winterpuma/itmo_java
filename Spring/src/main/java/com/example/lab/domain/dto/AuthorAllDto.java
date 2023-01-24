@@ -9,16 +9,13 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class BookDto {
+public class AuthorAllDto {
     @JsonProperty("id")
     private int id;
 
-    @JsonProperty("title")
-    private String title;
+    @JsonProperty("name")
+    private String name;
 
-    @JsonProperty("releaseDate")
-    private Date releaseDate;
-
-    @JsonProperty("authors")
-    private Set<AuthorDto> authors;
+    @JsonProperty("books")
+    private Set<BookSlimDto> books;
 }

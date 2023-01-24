@@ -1,5 +1,6 @@
 package com.example.lab.controller;
 
+import com.example.lab.domain.dto.AuthorAllDto;
 import com.example.lab.domain.dto.AuthorDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @RequestMapping("library/v1/author")
@@ -19,14 +22,17 @@ public interface AuthorController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    AuthorDto addAuthor(@RequestBody AuthorDto author);
+    void addAuthor(@RequestBody AuthorAllDto author);
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    List<AuthorAllDto> getAllAuthors();
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    AuthorDto getAuthor(@PathVariable("id") UUID authorId);
+    AuthorAllDto getAuthor(@PathVariable("id") int authorId);
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    AuthorDto updateAuthor(@RequestBody AuthorDto author);
+    void updateAuthor(@RequestBody AuthorAllDto author);
 
     @DeleteMapping(value = "/{id}")
-    void deleteAuthor(@PathVariable("id") UUID authorId);
+    void deleteAuthor(@PathVariable("id") int authorId);
 }

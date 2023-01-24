@@ -1,13 +1,16 @@
 package com.example.lab.service;
 
-import java.util.UUID;
+import java.util.List;
+import java.util.Set;
 
 public interface CommonService<T> {
-    T find(UUID id);
+    T find(int id);
 
-    T add(T entity);
+    List<T> findAll();
 
-    T update(T entity);
+    void add(T entity);
 
-    void delete(UUID id);
+    void update(T entity);
+
+    void delete(int id);
 }
