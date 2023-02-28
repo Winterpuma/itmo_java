@@ -1,6 +1,8 @@
 package com.example.lab.client.service;
 
+import com.example.lab.client.client.AuthorClient;
 import com.example.lab.client.client.BookClient;
+import com.example.lab.client.model.AuthorAllDto;
 import com.example.lab.client.model.BookDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LibraryService {
     private final BookClient bookClient;
+    private final AuthorClient authorClient;
 
     public void addBook(BookDto book) {
         bookClient.addBook(book);
@@ -33,5 +36,25 @@ public class LibraryService {
 
     public void deleteBook(int bookId) {
         bookClient.deleteBook(bookId);
+    }
+
+    public void addAuthor(AuthorAllDto author) {
+        authorClient.addAuthor(author);
+    }
+
+    public List<AuthorAllDto> getAllAuthors() {
+        return authorClient.getAllAuthors();
+    }
+
+    public AuthorAllDto getAuthor(int authorId) {
+        return authorClient.getAuthor(authorId);
+    }
+
+    public void updateAuthor(AuthorAllDto author) {
+        authorClient.updateAuthor(author);
+    }
+
+    public void deleteAuthor(int authorId) {
+        authorClient.deleteAuthor(authorId);
     }
 }

@@ -5,6 +5,13 @@ book-service-client:
     url: /{id}
   delete-book:
     url: /{id}
+author-service-client:
+  name: author-service
+  url: http://localhost:8080/library/v1/author/
+  add-author:
+    url: /{id}
+  delete-author:
+    url: /{id}
 
 server:
   port : 8081

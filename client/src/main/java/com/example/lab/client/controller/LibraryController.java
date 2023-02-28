@@ -1,5 +1,6 @@
 package com.example.lab.client.controller;
 
+import com.example.lab.client.model.AuthorAllDto;
 import com.example.lab.client.service.LibraryService;
 import com.example.lab.client.model.BookDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,31 @@ public class LibraryController {
     @DeleteMapping(value = "/book/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     void deleteBook(@PathVariable("id") int bookId) {
         libraryService.deleteBook(bookId);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(value = "/author", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    void addAuthor(@RequestBody AuthorAllDto author) {
+        libraryService.addAuthor(author);
+    }
+
+    @GetMapping(value = "/author", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<AuthorAllDto> getAllAuthors() {
+        return libraryService.getAllAuthors();
+    }
+
+    @GetMapping(value = "/author/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    AuthorAllDto getAuthor(@PathVariable("id") int authorId) {
+        return libraryService.getAuthor(authorId);
+    }
+
+    @PutMapping(value = "/author", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    void updateAuthor(@RequestBody AuthorAllDto author) {
+        libraryService.updateAuthor(author);
+    }
+
+    @DeleteMapping(value = "/author/{id}")
+    void deleteAuthor(@PathVariable("id") int authorId) {
+        libraryService.deleteAuthor(authorId);
     }
 }
