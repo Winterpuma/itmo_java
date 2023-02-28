@@ -1,0 +1,8 @@
+book-service-client:
+  name: book-service
+  url: http://localhost:8080/library/v1/
+  retrieve-book:
+    url: /book/{id}
+
+server:
+  port : 8081
