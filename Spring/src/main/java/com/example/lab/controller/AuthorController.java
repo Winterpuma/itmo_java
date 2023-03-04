@@ -35,4 +35,7 @@ public interface AuthorController {
 
     @DeleteMapping(value = "/{id}")
     void deleteAuthor(@PathVariable("id") int authorId);
+
+    @GetMapping(value = "/test")
+    String test();
 }

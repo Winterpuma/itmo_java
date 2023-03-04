@@ -21,6 +21,8 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.1'
     annotationProcessor('org.hibernate:hibernate-jpamodelgen')
 
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'

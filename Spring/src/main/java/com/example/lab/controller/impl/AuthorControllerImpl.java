@@ -33,4 +33,6 @@ public class AuthorControllerImpl implements AuthorController {
     public void deleteAuthor(int authorId) {
         authorService.delete(authorId);
     }
+
+    public String test() { return "test"; }//"{name: \"test\"}";}
 }
